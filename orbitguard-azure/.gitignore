@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+api/local.settings.json
+bin/
+obj/
+.terraform/
+node_modules/

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrbitGuard AI — Monitoramento Ambiental Orbital</title>
+  <meta name="description" content="Plataforma de monitoramento ambiental baseada em dados espaciais, IA e visão computacional. FIAP Global Solution 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Starfield background -->
+  <canvas id="starfield"></canvas>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">◐</span>
+      <div>
+        <span class="brand-name">OrbitGuard<span class="brand-ai"> AI</span></span>
+        <span class="brand-tag">Environmental Orbital Intelligence</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#problema">Problema</a>
+      <a href="#solucao">Solução</a>
+      <a href="#painel">Painel ao vivo</a>
+      <a href="#ods">ODS</a>
+      <a href="#arquitetura">Arquitetura</a>
+    </nav>
+    <span class="status-pill" id="apiStatus"><span class="dot"></span> conectando…</span>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">FIAP · Global Solution 2026 · Cloud Computing</p>
+      <h1>Vigilância ambiental a partir<br />da <span class="grad">órbita terrestre</span>.</h1>
+      <p class="lead">
+        O OrbitGuard AI coleta dados orbitais e climáticos, processa imagens de satélite
+        em pipelines automatizados na nuvem e gera <strong>alertas de risco ambiental</strong>
+        para apoiar a defesa civil, o agronegócio e a sustentabilidade.
+      </p>
+      <div class="hero-actions">
+        <a href="#painel" class="btn btn-primary">Ver painel ao vivo</a>
+        <a href="#arquitetura" class="btn btn-ghost">Arquitetura AWS</a>
+      </div>
+    </div>
+    <div class="hero-orbit" aria-hidden="true">
+      <div class="planet"></div>
+      <div class="orbit orbit-1"><span class="sat">🛰️</span></div>
+      <div class="orbit orbit-2"><span class="sat">🛰️</span></div>
+      <div class="orbit orbit-3"></div>
+    </div>
+  </section>
+
+  <!-- ===== IDENTIDADE / EQUIPE ===== -->
+  <section class="identity" id="identidade">
+    <div class="card-grid">
+      <article class="card">
+        <h3>Identidade do produto</h3>
+        <p><strong>OrbitGuard AI</strong> — plataforma de monitoramento ambiental orbital. Transforma
+        imagens de satélite e telemetria em alertas acionáveis de queimadas, enchentes e degradação do solo.</p>
+      </article>
+      <article class="card">
+        <h3>Equipe</h3>
+        <ul class="team">
+          <li>Integrante 1 — RM XXXXX</li>
+          <li>Integrante 2 — RM XXXXX</li>
+          <li>Integrante 3 — RM XXXXX</li>
+          <li>Integrante 4 — RM XXXXX</li>
+          <li>Integrante 5 — RM XXXXX</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Propósito</h3>
+        <p>Reduzir o tempo entre a captura de um sinal ambiental no espaço e a tomada de decisão em solo,
+        usando uma infraestrutura cloud segura, automatizada e monitorada.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEMA ===== -->
+  <section class="block" id="problema">
+    <span class="section-num">01</span>
+    <h2>O problema espacial que resolvemos</h2>
+    <div class="two-col">
+      <p>
+        Queimadas e enchentes evoluem em horas, mas os dados de observação da Terra ficam dispersos
+        em diferentes provedores orbitais, em formatos pesados e sem tratamento. Quando a informação
+        chega à defesa civil, muitas vezes já é tarde.
+      </p>
+      <p>
+        O OrbitGuard AI atua exatamente nesse intervalo: <strong>ingestão contínua de imagens de satélite</strong>,
+        classificação por visão computacional (cobertura do solo, foco de calor, corpos d'água) e
+        emissão automática de alertas de risco — tudo em uma infraestrutura cloud elástica que escala
+        com o volume orbital.
+      </p>
+    </div>
+    <div class="metrics">
+      <div class="metric"><span class="big" data-count="64">0</span><span>px/tile EuroSAT classificados</span></div>
+      <div class="metric"><span class="big" data-count="10">0</span><span>classes de cobertura do solo</span></div>
+      <div class="metric"><span class="big" data-count="15">0</span><span>min. de cadência de varredura</span></div>
+    </div>
+  </section>
+
+  <!-- ===== SOLUÇÃO ===== -->
+  <section class="block alt" id="solucao">
+    <span class="section-num">02</span>
+    <h2>Como a solução funciona</h2>
+    <div class="pipeline">
+      <div class="pstep">
+        <span class="picon">🛰️</span>
+        <h4>1. Ingestão orbital</h4>
+        <p>Uma regra do <em>EventBridge</em> dispara periodicamente uma função <em>Lambda</em> que simula a coleta de um novo tile de satélite.</p>
+      </div>
+      <div class="parrow">→</div>
+      <div class="pstep">
+        <span class="picon">🧠</span>
+        <h4>2. Análise por IA</h4>
+        <p>A Lambda classifica a cobertura do solo (o modelo CNN da entrega de Computer Vision) e calcula um índice de risco ambiental.</p>
+      </div>
+      <div class="parrow">→</div>
+      <div class="pstep">
+        <span class="picon">🚨</span>
+        <h4>3. Alerta de risco</h4>
+        <p>Alertas são persistidos no <em>DynamoDB</em> e expostos via <em>API Gateway</em>, consumidos por este painel servido pelo <em>S3 + CloudFront</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAINEL AO VIVO ===== -->
+  <section class="block" id="painel">
+    <span class="section-num">03</span>
+    <h2>Painel ao vivo de alertas orbitais</h2>
+    <p class="muted">Dados servidos pelo backend serverless (API Gateway + Lambda). Se a API ainda não estiver publicada, o painel exibe dados de demonstração.</p>
+    <div class="panel-bar">
+      <button class="btn btn-primary" id="refreshBtn">↻ Atualizar varredura</button>
+      <span class="panel-meta" id="panelMeta">—</span>
+    </div>
+    <div class="alerts" id="alerts"></div>
+  </section>
+
+  <!-- ===== ODS ===== -->
+  <section class="block alt" id="ods">
+    <span class="section-num">04</span>
+    <h2>Conexão com os ODS da ONU</h2>
+    <div class="ods-grid">
+      <article class="ods-card ods-13">
+        <span class="ods-num">13</span>
+        <h4>Ação contra a mudança climática</h4>
+        <p>ODS prioritário do desafio. O monitoramento de queimadas e do uso do solo gera dados para mitigar
+        emissões e antecipar eventos climáticos extremos.</p>
+      </article>
+      <article class="ods-card ods-15">
+        <span class="ods-num">15</span>
+        <h4>Vida terrestre</h4>
+        <p>Classificação de florestas, pastagens e degradação ambiental apoia o combate ao desmatamento.</p>
+      </article>
+      <article class="ods-card ods-11">
+        <span class="ods-num">11</span>
+        <h4>Cidades e comunidades sustentáveis</h4>
+        <p>Alertas de enchente em áreas residenciais dão tempo de resposta à defesa civil.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== ARQUITETURA ===== -->
+  <section class="block" id="arquitetura">
+    <span class="section-num">05</span>
+    <h2>Arquitetura na AWS</h2>
+    <div class="arch">
+      <div class="arch-layer">
+        <h5>Entrega</h5>
+        <span class="svc">S3</span><span class="svc">CloudFront</span><span class="svc">Route 53 (opc.)</span>
+      </div>
+      <div class="arch-layer">
+        <h5>Processamento</h5>
+        <span class="svc">API Gateway</span><span class="svc">Lambda</span><span class="svc">EventBridge</span><span class="svc">DynamoDB</span>
+      </div>
+      <div class="arch-layer">
+        <h5>Segurança</h5>
+        <span class="svc">IAM Roles</span><span class="svc">KMS</span><span class="svc">Secrets Manager</span><span class="svc">SSM Parameter Store</span>
+      </div>
+      <div class="arch-layer">
+        <h5>Observabilidade</h5>
+        <span class="svc">CloudWatch</span><span class="svc">Alarms</span><span class="svc">AWS Budgets</span>
+      </div>
+      <div class="arch-layer">
+        <h5>CI/CD</h5>
+        <span class="svc">GitHub Actions</span><span class="svc">OIDC</span><span class="svc">Terraform</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>OrbitGuard AI · FIAP Global Solution 2026 · Cloud Computing</p>
+    <p class="muted">Infraestrutura provisionada com Terraform · Deploy automatizado via GitHub Actions</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
