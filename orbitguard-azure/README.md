@@ -12,13 +12,11 @@ painel público, segurança, CI/CD e monitoramento.
 
 ## 👥 Equipe
 
-| Nome | RM |
-|------|----|
-| Integrante 1 | RM XXXXX |
-| Integrante 2 | RM XXXXX |
-| Integrante 3 | RM XXXXX |
-| Integrante 4 | RM XXXXX |
-| Integrante 5 | RM XXXXX |
+Geovanna Silva Cunha - RM97736
+Guilherme Doretto Sobreiro - RM99674
+Guilherme Fazito -RM550539
+Raí Gumieri dos Santos - RM98287
+Victor Camargo Maciel - RM98384
 
 ---
 
