@@ -45,7 +45,7 @@
       </p>
       <div class="hero-actions">
         <a href="#painel" class="btn btn-primary">Ver painel ao vivo</a>
-        <a href="#arquitetura" class="btn btn-ghost">Arquitetura AWS</a>
+        <a href="#arquitetura" class="btn btn-ghost">Arquitetura Azure</a>
       </div>
     </div>
     <div class="hero-orbit" aria-hidden="true">
@@ -114,19 +114,19 @@
       <div class="pstep">
         <span class="picon">🛰️</span>
         <h4>1. Ingestão orbital</h4>
-        <p>Uma regra do <em>EventBridge</em> dispara periodicamente uma função <em>Lambda</em> que simula a coleta de um novo tile de satélite.</p>
+        <p>Um <em>Timer Trigger</em> dispara periodicamente uma <em>Azure Function</em> que simula a coleta de um novo tile de satélite.</p>
       </div>
       <div class="parrow">→</div>
       <div class="pstep">
         <span class="picon">🧠</span>
         <h4>2. Análise por IA</h4>
-        <p>A Lambda classifica a cobertura do solo (o modelo CNN da entrega de Computer Vision) e calcula um índice de risco ambiental.</p>
+        <p>A Azure Function classifica a cobertura do solo (o modelo CNN da entrega de Computer Vision) e calcula um índice de risco ambiental.</p>
       </div>
       <div class="parrow">→</div>
       <div class="pstep">
         <span class="picon">🚨</span>
         <h4>3. Alerta de risco</h4>
-        <p>Alertas são persistidos no <em>DynamoDB</em> e expostos via <em>API Gateway</em>, consumidos por este painel servido pelo <em>S3 + CloudFront</em>.</p>
+        <p>Alertas são persistidos no <em>Cosmos DB</em> e expostos via <em>HTTP Trigger</em>, consumidos por este painel servido pelo <em>Azure Static Web Apps</em>.</p>
       </div>
     </div>
   </section>
@@ -135,7 +135,7 @@
   <section class="block" id="painel">
     <span class="section-num">03</span>
     <h2>Painel ao vivo de alertas orbitais</h2>
-    <p class="muted">Dados servidos pelo backend serverless (API Gateway + Lambda). Se a API ainda não estiver publicada, o painel exibe dados de demonstração.</p>
+    <p class="muted">Dados servidos pelo backend serverless (Azure Functions + Cosmos DB). Se a API ainda não estiver publicada, o painel exibe dados de demonstração.</p>
     <div class="panel-bar">
       <button class="btn btn-primary" id="refreshBtn">↻ Atualizar varredura</button>
       <span class="panel-meta" id="panelMeta">—</span>
@@ -170,34 +170,34 @@
   <!-- ===== ARQUITETURA ===== -->
   <section class="block" id="arquitetura">
     <span class="section-num">05</span>
-    <h2>Arquitetura na AWS</h2>
+    <h2>Arquitetura na Azure</h2>
     <div class="arch">
       <div class="arch-layer">
         <h5>Entrega</h5>
-        <span class="svc">S3</span><span class="svc">CloudFront</span><span class="svc">Route 53 (opc.)</span>
+        <span class="svc">Static Web Apps</span><span class="svc">CDN integrada</span><span class="svc">HTTPS</span>
       </div>
       <div class="arch-layer">
         <h5>Processamento</h5>
-        <span class="svc">API Gateway</span><span class="svc">Lambda</span><span class="svc">EventBridge</span><span class="svc">DynamoDB</span>
+        <span class="svc">Azure Functions</span><span class="svc">HTTP Trigger</span><span class="svc">Timer Trigger</span><span class="svc">Cosmos DB</span>
       </div>
       <div class="arch-layer">
         <h5>Segurança</h5>
-        <span class="svc">IAM Roles</span><span class="svc">KMS</span><span class="svc">Secrets Manager</span><span class="svc">SSM Parameter Store</span>
+        <span class="svc">Managed Identity</span><span class="svc">RBAC</span><span class="svc">Key Vault</span><span class="svc">App Configuration</span>
       </div>
       <div class="arch-layer">
         <h5>Observabilidade</h5>
-        <span class="svc">CloudWatch</span><span class="svc">Alarms</span><span class="svc">AWS Budgets</span>
+        <span class="svc">Application Insights</span><span class="svc">Alerts</span><span class="svc">Cost Management</span>
       </div>
       <div class="arch-layer">
         <h5>CI/CD</h5>
-        <span class="svc">GitHub Actions</span><span class="svc">OIDC</span><span class="svc">Terraform</span>
+        <span class="svc">GitHub Actions</span><span class="svc">Static Web Apps CI/CD</span><span class="svc">Bicep</span>
       </div>
     </div>
   </section>
 
   <footer class="site-footer">
     <p>OrbitGuard AI · FIAP Global Solution 2026 · Cloud Computing</p>
-    <p class="muted">Infraestrutura provisionada com Terraform · Deploy automatizado via GitHub Actions</p>
+    <p class="muted">Infraestrutura provisionada com Bicep · Deploy automatizado via GitHub Actions</p>
   </footer>
 
   <script src="config.js"></script>

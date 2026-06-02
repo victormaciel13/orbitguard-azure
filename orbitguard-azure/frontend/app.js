@@ -1,8 +1,8 @@
 /* ============================================================
    OrbitGuard AI — frontend logic
-   - Consome a API (API Gateway + Lambda). A URL é injetada no
-     build via config.js (gerada pelo pipeline CI/CD a partir do
-     output do Terraform). Se não existir, usa dados de demonstração.
+   - Consome a API (Azure Functions) em /api/alerts. Se a API
+     ainda não tiver dados ou estiver indisponível, mostra dados
+     de demonstração para o painel nunca ficar vazio.
    ============================================================ */
 
 // No Azure Static Web Apps a API fica em /api (mesma origem, sem CORS).
@@ -129,19 +129,26 @@ function setStatus(state) {
 }
 
 async function loadAlerts() {
-  if (!API_BASE_URL) {
-    setStatus("demo");
-    render(demoAlerts());
-    return;
-  }
+  // Tenta a API real com timeout curto. Se falhar/demorar, mostra demonstração.
   try {
-    const res = await fetch(`${API_BASE_URL}/alerts`, { headers: { Accept: "application/json" } });
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const res = await fetch(`${API_BASE_URL}/alerts`, {
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+    clearTimeout(timer);
     if (!res.ok) throw new Error("HTTP " + res.status);
     const data = await res.json();
-    setStatus("ok");
-    render({ source: "api", ...data });
+    // Só usa a API se ela realmente trouxe alertas; senão, demonstração.
+    if (data && Array.isArray(data.alerts) && data.alerts.length > 0) {
+      setStatus("ok");
+      render({ source: "api", ...data });
+      return;
+    }
+    throw new Error("API sem alertas ainda");
   } catch (err) {
-    console.warn("API indisponível, usando demo:", err);
+    console.warn("API indisponível ou vazia, usando demonstração:", err);
     setStatus("demo");
     render(demoAlerts());
   }
